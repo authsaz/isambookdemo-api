@@ -20,9 +20,9 @@ def balance():
 def get_account():
     content = request.json
     res =  {
-        "testuser":{'status':'1', 'account':['101010','202020']},
-        "jdoei":{'status':'1', 'account':['303030']},
-        "jthree":{'status':'1', 'account':['404040','505050']}}.get(content["username"],{'status':'0'})
+        "authsaz1":{'status':'1', 'account':['101010','202020']},
+        "authsaz2":{'status':'1', 'account':['303030']},
+        "authsaz3":{'status':'1', 'account':['404040','505050']}}.get(content["username"],{'status':'0'})
     return Response(json.dumps(res), content_type='appication/json')
 
 @app.route('/api/f/transfer', methods=['POST'])
