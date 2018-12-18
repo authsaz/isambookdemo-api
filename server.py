@@ -4,6 +4,7 @@ import json
 from urllib.parse import urlencode, quote_plus
 
 app = Flask(__name__)
+tokens = {}
 
 @app.route('/api/nf/balance', methods=['POST'])
 def balance():
@@ -33,7 +34,17 @@ def transfer():
            + content['account'] + ' to ' + content['account2']
         }
     return Response(json.dumps(res), content_type='appication/json')
-    
+
+@app.route('/internal/token', methods=['POST'])
+def internal_token():
+    content = request.json
+    res = {'status':'1'}
+    if(content['action'] == "save"):
+        tokens[content['uuid']] = content['data']
+    if(content['action'] == "load"):
+        res['data'] = tokens[content['uuid']]
+    return Response(json.dumps(res), content_type='appication/json')
+
 run = {
     "debug": True,
     "port": 7001,
