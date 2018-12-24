@@ -30,7 +30,7 @@ def get_account():
 def transfer():
     content = request.json
     res =  {
-        "Result":'Successfull transfer ' + content['amount'] + ' Dollars, From: ' 
+        "Result":'Successful transfer ' + content['amount'] + ' Dollars, From: ' 
            + content['account'] + ' to ' + content['account2']
         }
     return Response(json.dumps(res), content_type='appication/json')
