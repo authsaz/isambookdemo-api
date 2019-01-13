@@ -17,7 +17,7 @@ def balance():
         "505050":'50'}.get(content["account"],'0')
     return Response(json.dumps({"amount":bln}), content_type='appication/json')
 
-@app.route('/api/nf/get_account', methods=['POST'])
+@app.route('/api/nf/accounts', methods=['POST'])
 def get_account():
     content = request.json
     res =  {
